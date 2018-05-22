@@ -7,7 +7,41 @@
 	<title>Laboratorio Electrónica, Telecominicaciones e informática</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Humedad', 0],
+          ['Temperatura', 0]
+         
+        ]);
+        var options = {
+          width: 400, height: 400,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+        var chart = new google.visualization.Gauge(document.getElementById('Medidores'));
+        chart.draw(data, options);
+        setInterval(function() {
+            var JSON=$.ajax({
+                url:"http://localhost/ETI/DatoSensores.php?q=1",
+                dataType: 'json',
+                async: false}).responseText;
+            var Respuesta=jQuery.parseJSON(JSON);
+            
+          data.setValue(0, 1,Respuesta[0].chipid);
+          data.setValue(1, 1,Respuesta[0].temperatura);
+          chart.draw(data, options);
+        }, 1300);
+        
+      }
+    </script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
@@ -79,6 +113,7 @@
 						<span class="glyphicon glyphicon-time" aria-hidden="true"></span> Últimas entradas
 					</div>
 					<div class="panel-body">
+						<div id="Medidores"></div>
 						
 						<p>Todavía no hay entradas</p>
 					</div>
