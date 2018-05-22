@@ -7,6 +7,7 @@
 	<title>Laboratorio Electrónica, Telecominicaciones e informática</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
+	
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
@@ -45,9 +46,9 @@
 	</nav>
 	<div class="container">
 			<div class="jumbotron">
-				<h1>Blog de Zabala</h1>
+				<h1>Laboratorio ETI</h1>
 				<p>
-					Blog dedicado a la enseñanza de la mecatroncia
+					Gestion microred laboratorio de electrónica, telecomunicaciones e informática
 				</p>
 			</div>
 	</div>
@@ -78,11 +79,7 @@
 						<span class="glyphicon glyphicon-time" aria-hidden="true"></span> Últimas entradas
 					</div>
 					<div class="panel-body">
-						<?php
-							include_once "app/conexion.inc.php";
-							Conexion :: abrir_conexion();
-							Conexion :: obtener_conexion();
-						?>
+						
 						<p>Todavía no hay entradas</p>
 					</div>
 				</div>
