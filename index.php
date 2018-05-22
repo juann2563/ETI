@@ -16,8 +16,8 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Humedad', 0],
-          ['Temperatura', 0]
+          ['Voltaje', 0],
+          ['Corriente', 0]
          
         ]);
         var options = {
